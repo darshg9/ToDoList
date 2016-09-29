@@ -1,11 +1,11 @@
 function Tache(contenu, todo) {
+    // Ternaire stockant les données saisies. Stocke une chaine vide si rien n'a été saisi
     contenu ? this.contenu = contenu : this.contenu  = "";
     this.todo = todo;
-    console.log(this.contenu);
-    console.log(this.todo);
 
 }
 
+// Getters et Setters
 Tache.prototype.getContenu = function() {
 
     return this.contenu;

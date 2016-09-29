@@ -1,10 +1,9 @@
 function EventEmitter(){
 
-    this.events = []; // associative array : event => functions to call
+    this.events = [];
 
 }
 
-// Add a function to the event
 EventEmitter.prototype.on = function(eventName, fn){
 
     this.events[eventName] = this.events[eventName] || [];
@@ -25,5 +24,3 @@ EventEmitter.prototype.emit = function(eventName, data){
     }
 
 };
-
-//exports.start = EventEmitter;
