@@ -9,6 +9,7 @@
         <script src="models/tache.js" ></script>
         <script src="view/view.js" ></script>
         <script src="controller/controller.js" ></script>
+        <link rel="stylesheet" type="text/css" href="css/ToDoList.css">
 
     </head>
 
@@ -16,26 +17,26 @@
 
         <header>
 
-            <h1>To do or not to do?</h1>
+            <h1><span id="green">To do</span> or <span id="red">not to do</span>?</h1>
             <h4>That is the application...</h4>
+            <div class="line"></div>
 
         </header>
 
-        <hr>
 
         <main>
 
-            <div>
+            <div id="contenu">
 
                 <p>Bienvenue</p>
-                <div>
+                <div id="buttons">
 
                     <button id="nouvelle">Nouvelle tâche</button>
                     <button id="nettoyer">Supprimer les tâches effectuées</button>
                     <button id="vider">Vider la liste</button>
 
                 </div>
-                <hr>
+                <div class="line"></div>
                 <table id="liste">
 
 
@@ -46,13 +47,13 @@
 
         </main>
 
-        <hr>
 
-        <footer>
+        <!--<footer>
 
-            <h4>Mentions légales</h4>
+            <div class="line"></div>
+            <p>- Mentions légales -</p>
 
-        </footer>
+        </footer>-->
 
 
     </body>

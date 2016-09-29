@@ -44,7 +44,7 @@ Controller.prototype.nettoyerListe = function() {
 Controller.prototype.nouvelleTache = function() {
 
     texte = view.nouvelleTache();
-    if(typeof texte !== undefined) {
+    if(typeof texte !== undefined && texte !== "") {
 
         texte = this.stripHTML(texte);
         tache = new Tache(texte, true);
@@ -59,7 +59,7 @@ Controller.prototype.nouvelleTache = function() {
 Controller.prototype.editerTache = function(numero) {
 
     texte = view.editerTache(numero);
-    if(texte !== null) {
+    if(texte !== "") {
 
         tache = this.liste[numero];
         texte = this.stripHTML(texte);

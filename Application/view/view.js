@@ -63,7 +63,7 @@ View.prototype.afficherListe = function(taches) {
     }
     else {
 
-        contenu = document.createElement("td");
+        contenu = document.createElement("p");
         contenu.innerHTML = "Aucune tâche pour l'instant.";
         table.appendChild(contenu);
 
