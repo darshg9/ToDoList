@@ -2,13 +2,17 @@ function View() {
 
     EventEmitter.call(this);
 
-    // Définition des évènements à émettre à l'intention du controller
+    // Définition des évènements à surveiller
     nouvelleBtn = document.getElementById("nouvelle");
-    nouvelleBtn.addEventListener("click", this.emit.bind(this, "nouvelle"));
+    nouvelleBtn.addEventListener("click", this.nouvelleTache.bind(this));
     nettoyerBtn = document.getElementById("nettoyer");
     nettoyerBtn.addEventListener("click", this.emit.bind(this, "nettoyer"));
     viderBtn = document.getElementById("vider");
     viderBtn.addEventListener("click", this.emit.bind(this, "vider"));
+    validerBtn = document.getElementById("valider");
+    validerBtn.addEventListener("click", this.emit.bind(this, "valider"));
+    annulerBtn = document.getElementById("annuler");
+    annulerBtn.addEventListener("click", this.fermerPopup.bind(this));
 
 };
 
@@ -46,7 +50,7 @@ View.prototype.afficherListe = function(taches) {
             checkboxIcone.addEventListener("click", function() {ctrl.checkTache(numero)}.bind(this));
             crayonIcone.setAttribute("src", "resources/crayon.png");
             // Cliquer sur l'icône "crayon" permet d'éditer la tâche correspondante
-            crayonIcone.addEventListener("click", function() {ctrl.editerTache(numero)}.bind(this));
+            crayonIcone.addEventListener("click", function() {view.editerTache(numero)});
             poubelleIcone = document.createElement("img");
             poubelleIcone.setAttribute("src", "resources/poubelle.png");
             // Cliquer sur l'icône "poubelle" permet de supprimer la tâche correspondante
@@ -71,18 +75,42 @@ View.prototype.afficherListe = function(taches) {
 
 };
 
-// Ouvre une pop-up pour saisir une nouvelle tâche et renvoie les données saisies
+// Modifie les éléments de la pop-up pour qu'elle soit adaptée à la création d'une tâche
 View.prototype.nouvelleTache = function() {
 
-    texte = window.prompt("Veuillez entrer la tâche à ajouter:");
-    return texte;
+    message = document.getElementById("pop-up-message");
+    message.innerHTML = "Veuillez entrer la tâche à ajouter:";
+    saisie = document.getElementById("saisie");
+    saisie.value = "";
+    ctrl.numero = null;
+    this.afficherPopup();
 
 }
 
-// Ouvre une pop-up pour éditer une tâche et renvoie les données saisies
+// Modifie les éléments de la pop-up pour qu'elle soit adaptée à l'édition d'une tâche
 View.prototype.editerTache = function(numero) {
 
-    texte = window.prompt("Modifier une tâche:", ctrl.liste[numero].contenu);
-    return texte;
+    message = document.getElementById("pop-up-message");
+    message.innerHTML = "Modifier une tâche:";
+    saisie = document.getElementById("saisie");
+    saisie.value = ctrl.liste[numero].contenu;
+    ctrl.numero = numero;
+    this.afficherPopup();
+
+}
+
+// Ouvre la pop-up
+View.prototype.afficherPopup = function() {
+
+    popup = document.getElementById("pop-up");
+    popup.setAttribute("style", "display: block");
+
+}
+
+// Ferme la pop-up
+View.prototype.fermerPopup = function() {
+
+    popup = document.getElementById("pop-up");
+    popup.setAttribute("style", "display: none");
 
 }

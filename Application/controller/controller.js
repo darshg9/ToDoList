@@ -3,8 +3,9 @@ function Controller(view) {
     // Liste des actions à effectuer en fonction du signal émis par la vue
     view.on("vider", this.viderListe.bind(this));
     view.on("nettoyer", this.nettoyerListe.bind(this));
-    view.on("nouvelle", this.nouvelleTache.bind(this));
+    view.on("valider", this.validerTache.bind(this));
 
+    this.numero = null;
     this.importerListe();
 
 };
@@ -40,10 +41,19 @@ Controller.prototype.nettoyerListe = function() {
 
 };
 
-// Ajoute une nouvelle tâche à la liste grâce aux données saisies
-Controller.prototype.nouvelleTache = function() {
+// Récupère les données saisies dans la pop-up puis effectue l'action correspondante
+Controller.prototype.validerTache = function() {
 
-    texte = view.nouvelleTache();
+    texte = saisie.value;
+    if(this.numero == null) { this.nouvelleTache(texte); }
+    else { this.editerTache(this.numero, texte); }
+    view.fermerPopup();
+
+}
+
+// Ajoute une nouvelle tâche à la liste grâce aux données saisies
+Controller.prototype.nouvelleTache = function(texte) {
+
     if(typeof texte !== undefined && texte !== "") {
 
         texte = this.stripHTML(texte);
@@ -56,9 +66,8 @@ Controller.prototype.nouvelleTache = function() {
 };
 
 // Edite une tâche spécifique grâce aux données saisies
-Controller.prototype.editerTache = function(numero) {
+Controller.prototype.editerTache = function(numero, texte) {
 
-    texte = view.editerTache(numero);
     if(texte !== "") {
 
         tache = this.liste[numero];

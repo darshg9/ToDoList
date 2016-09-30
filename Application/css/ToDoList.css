@@ -1,16 +1,20 @@
 html {
 
     background: linear-gradient(to bottom right, lightblue, lightcyan);
-    min-height: 100%;
+    height: 100%;
 
 }
 
 body {
 
-    font-family: Segoe Script, arial;
+    font-family: Segoe Script, Calibri;
     font-size: 20px;
     min-height: 100%;
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom right, lightblue, lightcyan);
 
 }
 
@@ -32,7 +36,7 @@ header {
 h1 {
 
     font-size: 60px;
-    font-family: Buxton Sketch, arial;
+    font-family: Buxton Sketch, Calibri;
     margin: 0px;
 
 }
@@ -84,7 +88,7 @@ main {
 
 }
 
-#buttons {
+.buttons {
 
     display: flex;
     justify-content: space-around;
@@ -146,13 +150,78 @@ img {
 
 }
 
+#pop-up {
+
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+
+}
+
+
+#pop-up-contenu {
+
+    height: 50%;
+    width: 70%;
+    background: linear-gradient(to bottom right, lightblue, lightcyan);
+    position: fixed;
+    top: 25%;
+    left: 15%;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+
+}
+
+#pop-up-message {
+
+    width: 100%;
+    margin-top: 2%;
+
+
+}
+
+#pop-up .line {
+
+    width: 100%;
+
+}
+
+
+#pop-up textarea {
+
+    width: 80%;
+    height: 20%;
+    margin-top: 7%;
+    vertical-align: text-top;
+    font-size: 20px;
+    font-family: Segoe Script, Calibri;
+
+}
+
+#pop-up .buttons {
+
+    margin-top: 5%;
+
+}
+
+#pop-up button {
+
+    width: 20%;
+
+}
+
 footer {
 
 
-    font-family: arial;
+    font-family: Calibri;
     font-size: 16px;
     text-align: center;
-    position: absolute;
     bottom: 0;
     width: 100%;
     background: linear-gradient(to bottom right, silver, lightgrey);
